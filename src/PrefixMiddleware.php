@@ -37,7 +37,7 @@ class PrefixMiddleware implements MiddlewareInterface
             if (0 === strpos($path, $prefix))
             {
                 $req = $req->withUri($uri->withPath(substr($path, strlen($prefix))))
-                           ->withAttribute(self::class, $req->getAttribute(PrefixMiddleware::class, '') . $prefix);
+                           ->withAttribute(self::class, $req->getAttribute(self::class, '') . $prefix);
 
                 return $middleware->process($req, $handler);
             }
